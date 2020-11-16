@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 app.set("views", path.join(__dirname, "views"));
 
-app.use(morgan("tiny"));
+app.use(morgan("dev"));
 
 app.use(require("./routes/routes"));
 

@@ -3,21 +3,25 @@ const CryptoJS = require("crypto-js");
 var DES =
     DES ||
     (() => {
-        var cripto = ((msg, key, command) => {
-            if (command) {
-                return CryptoJS.DES.encrypt(msg, key);
+        var cripto = (msg, key, command) => {
+            if (command == true) {
+                var secret = CryptoJS.DES.encrypt(msg, key);
+                return secret;
             } else {
-                return CryptoJS.DES.decrypt(msg, key);
+                var secret = CryptoJS.DES.decrypt(msg, key);
+                return secret.toString(CryptoJS.enc.Utf8);
             }
-        })();
+        };
         return {
-            encript: (msg, key) => {
+            encriptar: (msg, key) => {
                 return cripto(msg, key, true);
             },
-            decrypt: (msg, key) => {
+            desencriptar: (msg, key) => {
                 return cripto(msg, key, false);
             },
         };
     })();
 
-export default DES;
+module.exports = {
+    DES: DES,
+};
