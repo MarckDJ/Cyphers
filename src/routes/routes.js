@@ -10,17 +10,19 @@ router.post("/cipher", (req, res) => {
             crypted: secret,
             decrypted: clear,
         });
-    }
-    if (req.body.command == "AES") {
+        return;
+    } else if (req.body.command == "AES") {
         var secret = cripto.AES.encriptar(req.body.msg, req.body.key);
         var clear = cripto.AES.desencriptar(secret, req.body.key);
         res.render("results.html", {
             crypted: secret,
             decrypted: clear,
         });
+        return;
     } else {
         res.render("index.html");
         console.log(req.body);
+        return;
     }
 });
 
