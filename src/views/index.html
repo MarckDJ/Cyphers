@@ -6,8 +6,16 @@
         <title>cripto</title>
     </head>
     <body>
-        <hi><%= crypted%></hi>
-        <br />
-        <h1><%= decrypted%></h1>
+        <script src="/static/validate.js"></script>
+        <select id="cifrado" onchange="change()">
+            <option>DES</option>
+            <option>AES</option>
+        </select>
+        <form action="/cipher" method="POST">
+            <input value="DES" name="command" id="command" hidden />
+            <input type="text" name="msg" />
+            <input type="text" name="key" />
+            <button type="submit">Guardar</button>
+        </form>
     </body>
 </html>
