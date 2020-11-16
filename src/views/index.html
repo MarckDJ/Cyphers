@@ -7,12 +7,17 @@
     </head>
     <body>
         <script src="/static/validate.js"></script>
-        <select id="cifrado" onchange="change()">
+        <select id="cifrado" onchange="change01()">
             <option>DES</option>
             <option>AES</option>
         </select>
+        <select id="orden" onchange="change02()">
+            <option value="enc">encriptar</option>
+            <option value="dec">desencriptar</option>
+        </select>
         <form action="/cipher" method="POST">
-            <input value="DES" name="command" id="command" hidden />
+            <input value="DES" name="cipher" id="cipher" hidden />
+            <input value="enc" name="command" id="command" hidden />
             <input type="text" name="msg" />
             <input type="text" name="key" />
             <button type="submit">Guardar</button>
