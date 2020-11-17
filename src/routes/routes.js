@@ -1,4 +1,5 @@
 const express = require("express");
+const { AES } = require("../cripto");
 const cripto = require("../cripto");
 const router = express.Router();
 
@@ -24,6 +25,7 @@ router.post("/cipher", (req, res) => {
     } else if (req.body.cipher == "AES") {
         if (req.body.command == "enc") {
             var out = cripto.AES.encriptar(req.body.msg, req.body.key);
+            console.log(out);
             res.render("results.html", {
                 msg: out,
             });
