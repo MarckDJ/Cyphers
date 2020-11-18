@@ -1,5 +1,4 @@
 const CryptoJS = require("crypto-js");
-const base65ArrayBuffer = require("./base64ArrayBuffer");
 
 var DES =
     DES ||
@@ -10,12 +9,10 @@ var DES =
                 var encrypted = CryptoJS.DES.encrypt(
                     msgWordArrray,
                     key
-                ).toString();
-                console.log(encrypted); // Encryption: I: WordArray -> O: -> Base64 encoded string (OpenSSL-format)
+                ).toString(); // Encryption: I: WordArray -> O: -> Base64 encoded string (OpenSSL-format)
                 return encrypted;
             } else {
                 var secret = CryptoJS.DES.decrypt(msg, key);
-                console.log(secret);
                 var typedArray = CryptJsWordArrayToUint8Array(secret);
                 var clear = uintToString(typedArray);
                 return clear;
@@ -44,7 +41,6 @@ var AES =
                 return encrypted;
             } else {
                 var secret = CryptoJS.AES.decrypt(msg, key);
-                console.log(secret);
                 var typedArray = CryptJsWordArrayToUint8Array(secret);
                 var clear = uintToString(typedArray);
                 return clear;
